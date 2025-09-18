@@ -25,10 +25,10 @@
   --color-text-primary: #333333;
   --color-text-secondary: #4f5561;
   --color-text-select: #4f5561;
-  --font-size-sm: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 24px;
-  --font-size-xl: 32px;
+  --font-size-sm: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 26px;
+  --font-size-xl: 34px;
   --border-color: #e4e8e9;
   --background-card: #f8f7fc;
   --background-input: #ffffff;
@@ -48,9 +48,9 @@
 
 body {
   background: var(--base-background);
-  height: 100vh;
   color: var(--color-text-secondary);
-  padding: 20px 20px 0 20px;
+  min-height: 100vh;
+  padding: 20px 20px 20px 20px;
   font-size: var(--font-size-md);
 }
 
@@ -215,11 +215,11 @@ select {
 }
 .task-card__edit {
   background: var(--color-button-secondary);
-  color: #ffffff
+  color: #ffffff;
 }
 .task-card__delete {
   background: var(--color-button-tertiary);
-  color: #ffffff
+  color: #ffffff;
 }
 dialog[open] {
   display: block;
@@ -272,4 +272,37 @@ dialog .dialog__divider {
   cursor: pointer;
   font-size: var(--font-size-xl);
   color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .kanban__controls {
+    gap: 7px;
+  }
+  .kanban__board {
+    grid-template-columns: 1fr;
+  }
+  button {
+    padding: 15px 15px;
+  }
+  input,
+  select {
+    padding: 15px 2px;
+  }
+  .task-card__button {
+    padding: 10px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 40px;
+  }
+  .kanban__controls {
+    display: grid;
+    grid-template-columns: 0.5fr;
+    gap: 10px;
+  }
+  .dialog__content {
+    max-width: 400px;
+  }
 }
