@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Kanban Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="kanban">
+      <header class="kanban__header">
+        <h1 class="kanban__title">Mini Kanban Board</h1>
+        <div class="kanban__controls">
+          <button
+            class="kanban__button kanban__button--add"
+            onclick="openDialog()"
+          >
+            Thêm Task
+          </button>
+          <input
+            type="text"
+            class="kanban__search"
+            placeholder="Tìm kiếm task..."
+          />
+          <select class="kanban__filter">
+            <option>Tất cả danh mục</option>
+          </select>
+          <button class="kanban__button kanban__button--dark" id="toggle">
+            Chuyển Dark Mode
+          </button>
+        </div>
+      </header>
+      <main class="kanban__board">
+        <section class="kanban-column kanban-column--todo">
+          <header class="kanban-column__header">
+            <h2 class="kanban-column__title">To Do</h2>
+            <span class="kanban-column__count">2</span>
+          </header>
+          <hr class="kanban-column__divider" />
+          <div class="kanban-column__tasks">
+            <article class="task-card">
+              <h2 class="task-card__title">Mtg-Sora</h2>
+              <p class="task-card__description">Meeting with stakeholders</p>
+              <div class="task-card__tags">
+                <span class="task-card__tag task-card__tag--work"
+                  >Công việc</span
+                >
+                <div class="task-card__actions">
+                  <button class="task-card__button task-card__edit">
+                    Edit
+                  </button>
+                  <button class="task-card__button task-card__delete">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="task-card">
+              <h2 class="task-card__title">Update seatmap</h2>
+              <p class="task-card__description">8 floor</p>
+              <div class="task-card__tags">
+                <span class="task-card__tag task-card__tag--other">Khác</span>
+                <div class="task-card__actions">
+                  <button class="task-card__button task-card__edit">
+                    Edit
+                  </button>
+                  <button class="task-card__button task-card__delete">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="kanban-column kanban-column--progress">
+          <header class="kanban-column__header">
+            <h2 class="kanban-column__title">In Progress</h2>
+            <span class="kanban-column__count">1</span>
+          </header>
+          <hr class="kanban-column__divider" />
+          <div class="kanban-column__tasks">
+            <article class="task-card">
+              <h2 class="task-card__title">Report</h2>
+              <p class="task-card__description">Report daily</p>
+              <div class="task-card__tags">
+                <span class="task-card__tag task-card__tag--personal"
+                  >Cá nhân</span
+                >
+                <div class="task-card__actions">
+                  <button class="task-card__button task-card__edit">
+                    Edit
+                  </button>
+                  <button class="task-card__button task-card__delete">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="kanban-column kanban-column--done">
+          <header class="kanban-column__header">
+            <h2 class="kanban-column__title">Done</h2>
+            <span class="kanban-column__count">1</span>
+          </header>
+          <hr class="kanban-column__divider" />
+          <div class="kanban-column__tasks">
+            <article class="task-card">
+              <h2 class="task-card__title">Estimation task</h2>
+              <p class="task-card__description">Task PO</p>
+              <div class="task-card__tags">
+                <span class="task-card__tag task-card__tag--urgent"
+                  >Khân cấp</span
+                >
+                <div class="task-card__actions">
+                  <button class="task-card__button task-card__edit">
+                    Edit
+                  </button>
+                  <button class="task-card__button task-card__delete">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+      <dialog id="dialog">
+        <div class="dialog__content">
+          <header class="dialog__header">
+            <h2 class="dialog__title">Chỉnh Sửa Task</h2>
+            <div class="dialog__close" onclick="closeDialog()">&times;</div>
+          </header>
+          <hr class="dialog__divider" />
+          <form class="dialog__form">
+            <div class="dialog__form-group">
+              <label for="title">Tiêu đề *</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Nhập tiêu đề task..."
+              />
+            </div>
+            <div class="dialog__form-group">
+              <label for="description">Mô tả *</label>
+              <textarea
+                name=""
+                id=""
+                rows="5"
+                placeholder="Nhập mô tả chi tiết"
+              ></textarea>
+            </div>
+            <div class="dialog__form-group">
+              <label for="title">Danh mục *</label>
+              <select name="" id="">
+                <option value="">Công việc</option>
+                <option value="">Cá nhân</option>
+                <option value="">Khẩn cấp</option>
+                <option value="">Khác</option>
+              </select>
+            </div>
+            <div class="dialog__form-group">
+              <label for="title">Trạng thái </label>
+              <select name="" id="">
+                <option value="">Tự do</option>
+              </select>
+            </div>
+            <div class="dialog__fotter">
+              <button
+                type="button"
+                class="kanban__button--dark"
+                onclick="closeDialog()"
+              >
+                Hủy
+              </button>
+              <button type="submit" class="kanban__button--add">
+                Thêm Task
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

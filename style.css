@@ -1,0 +1,275 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --base-background: linear-gradient(135deg, #687eed, #764ca2);
+  --base-color: #ffffff;
+  --color-button-primary: #667eeb;
+  --color-button-secondary: #4199e1;
+  --color-button-tertiary: #e44041;
+  --color-button-quaternary: #e1e8f0;
+  --color-todo: #e83c30;
+  --color-inprogress: #d66b33;
+  --color-done: #1aa56a;
+  --color-task-work: #bfe3f9;
+  --color-task-personal: #c7f6d4;
+  --color-task-urgent: #fed8d5;
+  --color-text-work: #396cae;
+  --color-text-personal: #366f4f;
+  --color-text-urgent: #a53b3d;
+  --color-text-primary: #333333;
+  --color-text-secondary: #4f5561;
+  --color-text-select: #4f5561;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --border-color: #e4e8e9;
+  --background-card: #f8f7fc;
+  --background-input: #ffffff;
+}
+
+.dark {
+  --base-background: linear-gradient(135deg, #2e3d50, #495669);
+  --base-color: #2e3649;
+  --background-card: #1a202c;
+  --color-text-primary: #e0e7ef;
+  --color-text-secondary: #a3acbb;
+  --color-text-select: #ffffff;
+  --color-button-quaternary: #495669;
+  --background-input: #1a202c;
+  --border-color: #4a5265;
+}
+
+body {
+  background: var(--base-background);
+  height: 100vh;
+  color: var(--color-text-secondary);
+  padding: 20px 20px 0 20px;
+  font-size: var(--font-size-md);
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0px;
+  font-size: var(--font-size-md);
+  color: #ffffff;
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+.kanban__header {
+  width: 100%;
+  text-align: center;
+  background-color: var(--base-color);
+  padding: 20px 0px;
+  border-radius: 10px;
+}
+.kanban__controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.kanban__button--add {
+  background-color: var(--color-button-primary);
+}
+.kanban__button--dark {
+  color: var(--color-text-select);
+  background-color: var(--color-button-quaternary);
+}
+input,
+textarea {
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 2px solid var(--border-color);
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  background: var(--background-input);
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+select {
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 2px solid var(--border-color);
+  font-size: var(--font-size-md);
+  color: var(--color-text-select);
+  background: var(--background-input);
+}
+.kanban__board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.kanban-column {
+  background: var(--base-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+.kanban-column__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.kanban-column__divider {
+  border: 2.5px solid var(--color-todo);
+  margin: 10px 0px;
+}
+.kanban-column__count {
+  max-width: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--color-button-quaternary);
+}
+.kanban-column--todo .kanban-column__title {
+  color: var(--color-todo);
+}
+.kanban-column--progress .kanban-column__title {
+  color: var(--color-inprogress);
+}
+.kanban-column--progress .kanban-column__divider {
+  border-color: var(--color-inprogress);
+}
+.kanban-column--done .kanban-column__title {
+  color: var(--color-done);
+}
+.kanban-column--done .kanban-column__divider {
+  border-color: var(--color-done);
+}
+
+.kanban-column__tasks {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 10px;
+}
+.task-card {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+}
+.task-card__title {
+  margin-bottom: 10px;
+  color: var(--color-text-primary);
+}
+.task-card__description {
+  margin-bottom: 10px;
+}
+.task-card__tags {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-card__tag {
+  border-radius: 10px;
+  padding: 5px 0px;
+  padding-left: 7px;
+  padding-right: 7px;
+  font-size: var(--font-size-sm);
+}
+.task-card__tag--work {
+  background: var(--color-task-work);
+  color: var(--color-text-work);
+}
+.task-card__tag--personal {
+  background: var(--color-task-personal);
+  color: var(--color-text-personal);
+}
+.task-card__tag--urgent {
+  background: var(--color-task-urgent);
+  color: var(--color-text-urgent);
+}
+.task-card__tag--other {
+  background: var(--color-button-quaternary);
+  color: var(--color-text-secondary);
+}
+.task-card__button {
+  font-size: var(--font-size-sm);
+  color: var(--base-color);
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+.task-card__edit {
+  background: var(--color-button-secondary);
+  color: #ffffff
+}
+.task-card__delete {
+  background: var(--color-button-tertiary);
+  color: #ffffff
+}
+dialog[open] {
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 25, 0.8);
+  position: fixed;
+  z-index: 100;
+}
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  color: var(--color-text-primary);
+}
+.dialog__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--base-color);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+.dialog__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+label {
+  color: var(--color-text-select);
+}
+.dialog__fotter {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+dialog .dialog__divider {
+  border: 1px solid var(--border-color);
+}
+.dialog__close {
+  cursor: pointer;
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+}
