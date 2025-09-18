@@ -303,6 +303,6 @@ dialog .dialog__divider {
     gap: 10px;
   }
   .dialog__content {
-    max-width: 400px;
+    max-width: 350px;
   }
 }
