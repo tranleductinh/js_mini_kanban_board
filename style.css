@@ -294,13 +294,12 @@ dialog .dialog__divider {
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 40px;
-  }
   .kanban__controls {
     display: grid;
-    grid-template-columns: 0.5fr;
+    grid-template-columns: 1fr;
     gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .dialog__content {
     max-width: 350px;
